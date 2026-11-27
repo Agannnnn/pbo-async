@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import com.sultan.pbo.dto.UserRepository;
 import com.sultan.pbo.model.User;
+import com.sultan.pbo.utils.FlashSession;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -16,6 +17,8 @@ public class RegisterController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        FlashSession.ParseFlashSession(req);
+
         req.getRequestDispatcher("/WEB-INF/views/register.jsp").forward(req, resp);
     }
 
