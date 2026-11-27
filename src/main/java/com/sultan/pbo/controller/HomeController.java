@@ -2,6 +2,9 @@ package com.sultan.pbo.controller;
 
 import java.io.IOException;
 
+import com.sultan.pbo.dto.ProductRepository;
+import com.sultan.pbo.utils.FlashSession;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -22,6 +25,11 @@ public class HomeController extends HttpServlet {
             resp.sendRedirect("/login");
             return;
         }
+
+        ProductRepository productRepository = new ProductRepository();
+        
+        req.setAttribute("products", productRepository.findAll());
+        FlashSession.ParseFlashSession(req);
 
         req.getRequestDispatcher("/WEB-INF/views/home.jsp").forward(req, resp);
     }
