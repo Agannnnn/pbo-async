@@ -26,7 +26,7 @@
                 <jsp:scriptlet>
                     }
                 </jsp:scriptlet>
-                <form action="/login" method="post" class="flex flex-col gap-2">
+                <form action="/register" method="post" class="flex flex-col gap-2">
                     <div class="flex flex-col gap-2">
                         <label for="email">Email</label>
                         <input type="email" name="email" id="email" class="border rounded-md px-4 py-2"
@@ -43,7 +43,7 @@
                     <button class="bg-green-400 text-white px-4 py-2 rounded-md" type="submit">Register</button>
                 </form>
                 <span class="text-center text-gray-800">
-                    Atau <a href="/register" class="text-blue-600 underline">login</a> akun yang sudah ada
+                    Atau <a href="/login" class="text-blue-600 underline">login</a> akun yang sudah ada
                 </span>
             </div>
         </div>
