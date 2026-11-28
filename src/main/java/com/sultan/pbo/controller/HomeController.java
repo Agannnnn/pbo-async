@@ -3,6 +3,7 @@ package com.sultan.pbo.controller;
 import java.io.IOException;
 
 import com.sultan.pbo.dto.ProductRepository;
+import com.sultan.pbo.model.Product;
 import com.sultan.pbo.utils.FlashSession;
 
 import jakarta.servlet.ServletException;
@@ -11,6 +12,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.util.ArrayList;
 
 /**
  * HomeController
@@ -27,10 +29,17 @@ public class HomeController extends HttpServlet {
         }
 
         ProductRepository productRepository = new ProductRepository();
-        
-        req.setAttribute("products", productRepository.findAll());
-        FlashSession.ParseFlashSession(req);
+        ArrayList<Product> products = productRepository.findAll();
 
+        String query = req.getParameter("q");
+        if (query != null) {
+            products.removeIf((t) -> {
+                return (!t.getName().toLowerCase().contains(query) && !t.getNo().toLowerCase().contains(query));
+            });
+        }
+
+        FlashSession.ParseFlashSession(req);
+        req.setAttribute("products", products);
         req.getRequestDispatcher("/WEB-INF/views/home.jsp").forward(req, resp);
     }
 
