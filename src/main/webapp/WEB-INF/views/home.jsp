@@ -24,7 +24,11 @@
             <main class="mx-8 my-6 bg-white rounded-xl px-4 py-2 flex flex-col gap-4">
                 <h1 class="text-4xl font-bold">Inventory</h1>
                 <div class="grid grid-cols-[1fr_auto] gap-4">
-                    <section>
+                    <section class="flex flex-col gap-4">
+                        <form action="/" method="GET" class="grid grid-cols-[1fr_auto] gap-2 w-full">
+                            <input type="text" name="q" class="px-4 py-2 border rounded-lg" />
+                            <button type="submit" class="bg-blue-800 text-white border rounded-lg px-4 w-fit">Find item</button>
+                        </form>
                         <table class="table-auto w-full rounded-lg overflow-clip">
                             <thead class="text-left bg-blue-600 text-white">
                                 <tr class="border-b border-gray-800">
