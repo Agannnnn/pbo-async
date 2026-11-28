@@ -1,6 +1,7 @@
 package com.sultan.pbo.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import com.sultan.pbo.dto.ProductRepository;
 import com.sultan.pbo.model.Product;
@@ -12,7 +13,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import java.util.ArrayList;
 
 /**
  * HomeController
@@ -34,7 +34,7 @@ public class HomeController extends HttpServlet {
         String query = req.getParameter("q");
         if (query != null) {
             products.removeIf((t) -> {
-                return (!t.getName().toLowerCase().contains(query) && !t.getNo().toLowerCase().contains(query));
+                return (!t.getName().toLowerCase().contains(query.toLowerCase()) && !t.getNo().toLowerCase().contains(query.toLowerCase()));
             });
         }
 
