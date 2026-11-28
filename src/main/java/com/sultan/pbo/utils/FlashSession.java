@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 public class FlashSession {
+
     public static void ParseFlashSession(HttpServletRequest req) {
         HttpSession session = req.getSession();
         String errors = null;
